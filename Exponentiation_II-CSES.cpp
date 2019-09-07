@@ -25,17 +25,17 @@ int main(){
  
 /*
 According the Fermat's little
-a(M - 1) = 1 (mod M) if M is a prime.
+a^(M - 1) = 1 (mod M) if M is a prime.
  
 So if we rewrite BC as x*(M-1) + y, then the
-task of computing ABC becomes Ax*(M-1) + y
-which can be written as Ax*(M-1)*Ay.
-From Fermat's little theorem, we know Ax*(M-1) = 1.
-So task of computing ABC reduces to computing Ay
+task of computing A^B^C becomes A^(x*(M-1) + y)
+which can be written as A^(x*(M-1))*A^y.
+From Fermat's little theorem, we know A^(x*(M-1)) = 1.
+So task of computing A^B^C reduces to computing A^y
  
 What is the value of y?
-From BC = x * (M - 1) + y,
-y can be written as BC % (M-1)
+From B^C = x * (M - 1) + y,
+y can be written as B^C % (M-1)
  
 We can easily use the above theorem such that we can get
 A ^ (B ^ C) % M = (A ^ y ) %  M
@@ -43,4 +43,6 @@ A ^ (B ^ C) % M = (A ^ y ) %  M
 Now we only need to find two things as:-
 1. y = (B ^ C) % (M - 1)
 2. Ans = (A ^ y) % M
+
+//https://www.geeksforgeeks.org/find-power-power-mod-prime/
 */
