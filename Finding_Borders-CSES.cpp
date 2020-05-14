@@ -1,3 +1,5 @@
+//..1.............Using Z algo................................
+
 //https://cses.fi/problemset/task/1732/
 
 #include<bits/stdc++.h>
@@ -32,4 +34,44 @@ int main(){
     for(ll i=n-1;i>=1;i--){
     	if(v[i]==(n-i)) cout<<v[i]<<" ";
 	}
+}
+
+
+
+//..2..........................Using KMP.........................................
+#include <bits/stdc++.h>
+#define vll vector<long long> 
+#define f(i,a,b) for(long long i=a;i<b;i++)
+#define pb(i) push_back(i)
+typedef long long ll;
+using namespace std;
+ 
+vector<ll> aux;
+ 
+void kmpf(string w){
+    ll lw=w.length();
+    aux.resize(lw,0);
+    ll i=1,m=0;
+    while(i<lw){
+        if(w[i]==w[m]){
+            m++;
+            aux[i]=m;
+            i++;
+        }
+        else if(w[i]!=w[m] and m!=0)    m=aux[m-1];
+        else{
+            aux[i]=0;
+            i++;
+        }
+    }
+}
+ 
+int main(){
+	string s;cin>>s;
+	kmpf(s);vll v;
+	ll n = s.length();ll id = n-1;
+	while(aux[id]){
+		v.push_back(aux[id]);id = aux[id]-1;
+	}
+	for(ll i=v.size()-1;i>=0;i--) cout<<v[i]<<" ";
 }
